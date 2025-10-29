@@ -1,0 +1,90 @@
+.expense {
+    color: var(--deep-red-color);
+    font-weight: 700;
+}
+
+.income {
+    color: var(--dark-green-color);
+    font-weight: 700;
+}
+
+.title-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.record-divider-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 30px;
+
+    .expense-date-wrapper {
+        background-color: var(--main-green-color);
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 8px;
+        display: flex;
+        justify-items: flex-start;
+        align-items: center;
+        padding-left: 10px;
+    }
+
+    .date-total-expense-wrapper {
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        
+    }
+}
+
+.transaction-record-container {
+    width: auto;
+
+    .transaction-record-list {
+        padding: 0px;
+        display: flex;
+        flex-wrap: wrap;
+
+        .transaction-record-wrapper {
+            width: 100%;
+            height: 40px;
+            border: 2px solid var(--off-white-color);
+            border-radius: 13px;
+            background-color: var(--off-white-color);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+
+            .icon-transaction-wrapper {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .transaction-record {
+                list-style-type: none;
+                color: var(--default-font-color);
+                font-weight: 400;
+            }
+
+            &:hover {
+                border: 2px solid var(--main-green-color);
+                box-shadow: 4px 4px var(--shadow-color);
+            }
+        }
+    }
+}

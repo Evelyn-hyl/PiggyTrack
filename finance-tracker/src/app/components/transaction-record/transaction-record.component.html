@@ -1,0 +1,42 @@
+<!-- Transaction Record Component -->
+<div>
+    <div class="title-wrapper">
+        <h2>Record</h2>
+        <h6>0 ITEMS</h6>
+        <!-- ADD VARIABLE IN PLACE OF ITEM COUNT -->
+    </div>
+    
+    <div class="record-divider-container">
+        <div class="expense-date-wrapper">
+            <!-- CHANGE THIS TO VARIABLE -->
+            <h5>08.02.2025</h5> 
+        </div>
+
+        <div class="date-total-expense-wrapper">
+            <h5 class="expense">-$157.36</h5>
+        </div>
+    </div>
+
+    <div class="transaction-record-container">
+        <ul cdkListbox
+            class="transaction-record-list">
+            @for (transaction of this.txs.transactions(); track transaction.id) {
+                <div class="transaction-record-wrapper" (click)="openTransactionDetails(transaction)">
+                    <div class="icon-transaction-wrapper">
+                        <img height="33" width="33" [src]="getSubcategoryIcon(transaction.category, transaction.subCategory, transaction.amount)">
+                        <li [cdkOption]="transaction" class="transaction-record">
+                            <strong>{{ transaction.subCategory}}</strong><br>
+                            <small>{{ transaction.category }} &nbsp; {{ transaction.description ? "|&nbsp;&nbsp;&nbsp;" + transaction.description : ""}}</small>
+                        </li>
+                    </div>
+                    
+
+                    <div>
+                        <h5 [class.income]="transaction.amount >= 0" [class.expense]="transaction.amount < 0">{{ transaction.amount > 0 ? "+" : "" }}{{ transaction.amount }}</h5>
+                    </div>
+                </div>
+            }
+        </ul>
+    </div>
+</div>
+

@@ -1,0 +1,70 @@
+.budget-widget-container {
+    border: 2px solid var(--main-green-color);
+    border-radius: 13px;
+    height: 110px;
+    width: 270px; // CHANGE TO MAX-WIDTH ONCE DESIGN COMPLETES
+    position: relative;
+    box-shadow: 0px 2px 2px rgba(120, 85, 40, 0.08);
+    background-color: var(--off-white-color);
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 4px 5px var(--shadow-color);
+    }
+
+    .tree-percentage-wrapper {
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        line-height: 100%;
+        display: inline-block;
+
+
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.7rem;
+            margin: 0; 
+            color: var(--off-white-color);
+        }
+
+        .tree-icon {
+            display: block;
+        }
+    }
+
+    .budget-stats-wrapper {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 95px;
+        bottom: 38px;
+
+        .row {
+            color: var(--default-font-color);
+            display: flex;
+            font-size: 0.9em;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;   
+        }
+    }
+    
+
+    .widget-title-wrapper {
+        position: absolute;
+        background-color: var(--main-green-color);
+        width: 100%;
+        height: 30px;
+        bottom: 0;
+        left: 0;
+        border-radius: 0px 0px 10px 10px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

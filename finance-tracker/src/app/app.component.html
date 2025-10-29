@@ -1,0 +1,69 @@
+
+<main class="main" [class.is-open]="isSidepeekOpen()">
+
+  <!-- Overlay Panel -->
+  <app-overlay-panel #overlayPanel></app-overlay-panel>
+
+  <!-- Sidepeek Menu -->
+    <app-sidepeek
+    [isSidepeekOpen]="isSidepeekOpen()"
+    (close)="closeSidepeek()"></app-sidepeek>
+
+  <nav>
+    <div class="nav-bar-content">
+      <button class="circular-icon-button" [class.is-open]="isSidepeekOpen()" (click)="toggleSidepeek()">
+        
+        <img class="menu-icon" height="25" width="25" [class.is-open]="isSidepeekOpen()" src="assets/side-nav.svg" alt="menu">
+        
+      </button>
+      <div class="search-bar-wrapper">
+        <img class="search-icon" height="20" width="20" src="assets/search.svg" alt="search">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search transaction..."
+        >
+      </div>
+      <div class="right-slot"></div>
+    </div>
+  </nav>
+
+  
+  <div class="content-container">
+
+
+    <!-- Month-Year Bar -->
+    <div class="month-year-container">
+      <h1>AUGUST 2025</h1>
+      <div class="arrow-container">
+        <img class="arrow-back-icon" height="20" width="20" src="assets/arrow-back.svg">
+        <img class="arrow-forward-icon" height="20" width="20" src="assets/arrow-forward.svg">
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Budget Panel Section -->
+    <h2>Overview</h2>
+    <div class="budget-panel-container">
+      <app-budget-widget></app-budget-widget>
+      <app-budget-widget></app-budget-widget>
+
+      <div class="budget-buttons-wrapper">
+        <button class="budget-button budget-button--neutral" (click)="openTransactionEditor('Income')">Set Budget</button>
+        <button class="budget-button budget-button--red" (click)="openTransactionEditor('Expense')">Add Expense</button>
+        <button class="budget-button budget-button--green" (click)="openTransactionEditor('Income')">Add Income</button>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    
+    <!-- Transaction Records Section -->
+    <div class="transaction-record-container">
+      <app-transaction-record></app-transaction-record>
+    </div>
+    
+  </div>
+</main>
+
+<router-outlet />

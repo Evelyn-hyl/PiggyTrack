@@ -1,0 +1,32 @@
+<div class="transaction-details-wrapper">
+    <div class="panel-header">
+        <div class="panel-title-wrapper">
+            <div class="icon-wrapper">
+                <img height="18" width="18" src="assets/money.svg">
+            </div>
+            
+            <h6 class="panel-title">TRANSACTION DETAILS</h6>
+        </div>
+        <button class="button-wrapper" (click)="closeSelf()">
+            <img height="23" width="23" src="assets/close.svg">
+        </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="panel-content-container">
+        <div class="panel-full-width-content">
+            <div class="transaction-details-item">
+                <h4 class="transaction-details-title">Transaction Type</h4>
+                <div class="select-wrapper">
+                    <div class="select-button" *ngIf="txs.selectedTransaction() as tx">
+                        <img
+                            height="15" width="15"
+                            [src]="tx.amount > 0 ? 'assets/money.svg' : 'assets/wallet.svg'">
+                        {{ tx.amount > 0 ? 'Income' : 'Expense' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

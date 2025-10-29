@@ -1,0 +1,25 @@
+@use '../../../styles.scss';
+@use '../transaction-editor/transaction-editor.component.scss';
+
+.transaction-details-wrapper {
+    width: 600px;
+    min-height: 600px;
+    max-height: var(--panel-h);
+    border-radius: 15px;
+    border: 2px solid var(--dark-green-color);
+    background-color: var(--sidepeek-background-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-full-width-content {
+    background-color: var(--background-color);
+    width: 100%;
+    flex: 1 1 auto;
+    padding: 20px;
+}
+
+.transaction-details-title {
+    margin: 0;
+}

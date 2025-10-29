@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --background-color: #eee7d5;
+    --shadow-color: #ded3c2;
+    --default-font-color: #3C3E32;
+    --main-green-color: #B4B18A;
+    --dark-green-color: #5F683F;
+    --off-white-color: #FFFEF3;
+    --off-white-shadow-color: #f3f2e8;
+    --red-color: #C2815E;
+    --deep-red-color: #BC583B;
+    --sidepeek-background-color: #c0bd94;
+    --sidepeek-shadow-color: #9aa277;
+    
+    --green-shadow-color: #928f66;
+    --font: 'MozillaText';
+
+    --nav-h: 58px;
+}
+
+@mixin content {
+    padding-left: 24px;
+    padding-right: 24px;
+    max-width: 800px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+    position: relative;
+}
+
+@mixin button {
+    font-family: var(--font), sans-serif;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'MozillaText';
+    font-weight: 400;
+    src: url('/assets/MozillaText-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'MozillaText';
+    font-weight: 700;
+    src: url('/assets/MozillaText-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'MozillaText';
+    font-weight: 500;
+    src: url('/assets/MozillaText-Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'MozillaText';
+    font-weight: 600;
+    src: url('/assets/MozillaText-SemiBold.woff2') format('woff2');
+}
+
+
+body, html, app-root {
+    font-family: var(--font);
+    height: 100%;
+    margin: 0;
+    background-color: var(--background-color);
+    
+}
+
+
+h1 {
+    font-weight: 700;
+    font-size: 1.8em;
+    color: var(--default-font-color);
+    // text-shadow: 1px 1px var(--shadow-color);
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 1.3em;
+    color: var(--default-font-color);
+    // text-shadow: 1px 1px var(--shadow-color);
+}
+
+h4 {
+    font-weight: 500;
+    color: var(--dark-green-color);
+    font-size: smaller;
+}
+
+h5 {
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    color: var(--off-white-color);
+}
+
+h6 {
+    font-weight: 400;
+    color: var(--green-shadow-color);
+}

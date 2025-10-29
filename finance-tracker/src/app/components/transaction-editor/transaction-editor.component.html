@@ -1,0 +1,182 @@
+<!-- Transaction Editor -->
+<div class="transaction-editor-wrapper">
+    
+    <div class="panel-header">
+        <div class="panel-title-wrapper">
+            <img height="15" width="15" src="assets/ink-pen.svg">
+            <h6 class="panel-title">TRANSACTION EDITOR</h6>
+        </div>
+        <button class="button-wrapper" (click)="closeSelf()">
+            <img height="23" width="23" src="assets/close.svg">
+        </button>
+        
+    </div>
+    
+
+    <div class="divider"></div>
+
+    <div class="panel-content-container">
+        <div class="transaction-details-container">
+            <div class="transaction-details">
+                <form [formGroup]="transactionForm" style="display: contents;" (ngSubmit)="save()">
+                    <!-- Transaction Type Section -->
+                    <div class="transaction-details-item">
+                        <p class="transaction-details-title">Transaction Type</p>
+                        <div class="select-wrapper">
+                            <button class="select-button">
+                                <img
+                                    height="15" width="15"
+                                    [src]="isExpenseTabOpen()? 'assets/money.svg' : 'assets/wallet.svg'">
+                                {{ transactionType() }}
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="divider details"></div>
+                    
+                    <!-- Category Section -->
+                    <div class="transaction-details-item">
+                        <p class="transaction-details-title">Category</p>
+                        <div class="select-wrapper">
+                            <button class="select-button">
+                                <img
+                                    height="15" width="15"
+                                    [src]="selectedCategory.icon">
+                                {{ selectedCategory.name }}
+                            </button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="divider details"></div>
+
+                    <!-- Subcategory Section -->
+                    <div class="transaction-details-item">
+                        <p class="transaction-details-title">Subcategory</p>
+                        <div class="select-wrapper">
+                            <button class="select-button">
+                                <img
+                                    height="15" width="15"
+                                    [src]="selectedSubcategory.icon">
+                                {{ selectedSubcategory.name }}
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="divider details"></div>
+
+                    <!-- Amount Section -->
+                    <div class="transaction-details-item">
+                        <p class="transaction-details-title">Amount</p>
+                        <div class="input-wrapper">
+                            <input  cdkInput 
+                                    type="text"
+                                    formControlName="amount"
+                                    (blur)="formatAmount()"
+                                    (focus)="stripFormatting()"
+                                    placeholder="Enter amount"
+                                    class="select-button input">
+                        </div>
+                    </div>
+
+                    <div class="divider details"></div>
+                    
+                    <!-- Date Section -->
+                    <div class="transaction-details-item">
+                        <p class="transaction-details-title">Date</p>
+                        <div class="input-wrapper">
+                            <input  cdkInput 
+                                    type="text"
+                                    placeholder="YYYY-MM-DD"
+                                    class="select-button input"
+                                    formControlName="date">
+                        </div>
+                    </div>
+                    
+                    <div class="divider details"></div>
+
+                    <!-- Description Section -->
+                    <div class="transaction-details-item">
+                        <p class="transaction-details-title">Description</p>
+                        <div class="description-wrapper">
+                            <textarea
+                                cdkTextareaAutosize
+                                class="description-input"
+                                placeholder="Enter description"
+                                formControlName="description">
+                            </textarea>
+                        </div>
+                    </div>
+                </form>  
+            </div>  
+            <div class="input-wrapper">
+                <button class="tab-button save" type="submit" (click)="save()">SAVE</button>
+            </div>
+        </div>
+
+
+        <div class="transaction-main-content-container">
+            <div class="tab-buttons-wrapper">
+                <button class="tab-button" [class.isOpen]="isIncomeTabOpen()" (click)="toggleIncomeTab()">INCOME</button>
+                <button class="tab-button" [class.isOpen]="isExpenseTabOpen()" (click)="toggleExpenseTab()">EXPENSE</button>
+            </div>
+            <div class="transaction-main-content">
+                <div class="category-wrapper scrollable-content">
+                    <div class="category-section" [class.active]="isIncomeTabOpen()" [class.inactive]="!isIncomeTabOpen()">
+                        <div class="category-menu-bar-container" cdkMenuBar>
+                            @for (category of incomeCategories; track category.id) {
+                                <button class="category-menu-bar-item" [class.is-selected]="selectedCategory === category" (click)="selectCategory(category)" cdkMenuItem>
+                                    <img height="14" width="14" [src]="category.icon">
+                                    {{ category.name }}
+                                </button>
+                            }
+                        </div>
+
+                        <div class="category-grid-container">
+                            <mat-grid-list *ngIf="isIncomeTabOpen()" cols="4" rowHeight="1:1">
+                                @for (sub of selectedCategory?.subcategories; track sub.id) {
+                                    <mat-grid-tile>
+                                        <div class="tile-wrapper">
+                                            <button class="subcategory-button" [class.is-selected]="selectedSubcategory === sub" (click)="selectSubcategory(sub)">
+                                                <img class="subcategory-grid-icon" [src]="sub.icon">
+                                                {{ sub.name }}
+                                            </button>
+                                        </div>
+                                    </mat-grid-tile>
+                                }   
+                            </mat-grid-list>
+                        </div>
+                    </div>
+
+                    <div class="category-section" [class.active]="isExpenseTabOpen()" [class.inactive]="!isExpenseTabOpen()">
+                        <div class="category-menu-bar-container" cdkMenuBar>
+                            @for (category of expenseCategories; track category.id) {
+                                <button class="category-menu-bar-item" [class.is-selected]="selectedCategory === category" (click)="selectCategory(category)" cdkMenuItem>
+                                    <img height="14" width="14" [src]="category.icon">
+                                    {{ category.name }}
+                                </button>
+                            }
+                        </div>
+
+                        <div class="category-grid-container">
+                            <mat-grid-list *ngIf="isExpenseTabOpen()" cols="4" rowHeight="1:1">
+                                @for (sub of selectedCategory?.subcategories; track sub.id) {
+                                    <mat-grid-tile>
+                                        <div class="tile-wrapper">
+                                            <button class="subcategory-button" [class.is-selected]="selectedSubcategory === sub" (click)="selectSubcategory(sub)">
+                                                <img class="subcategory-grid-icon" [src]="sub.icon">
+                                                {{ sub.name }}
+                                            </button>
+                                        </div>
+                                    </mat-grid-tile>
+                                }   
+                            </mat-grid-list>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
