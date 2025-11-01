@@ -1,7 +1,7 @@
 # 🐷 PiggyTrack  
 _A playful personal finance tracker for younger users, built with Angular Material/CDKand TypeScript._
-<img width="1408" height="784" alt="Screenshot 2025-10-29 163850" src="https://github.com/user-attachments/assets/0677346f-e26d-4d72-964e-f01b268c56b3" />
-<img width="1413" height="784" alt="Screenshot 2025-10-29 163905" src="https://github.com/user-attachments/assets/35453c9f-194b-4dc2-bcd5-9ab8fb203f52" />
+<img width="1899" height="985" alt="Screenshot 2025-11-01 143411" src="https://github.com/user-attachments/assets/b9129838-27ff-4df6-a45b-e92453df9935" />
+<img width="1899" height="987" alt="Screenshot 2025-11-01 143427" src="https://github.com/user-attachments/assets/a6d53b72-475c-4c18-be06-68ebb5fe3e0b" />
 
 ## 📖 Overview  
 **PiggyTrack** is a web-based finance tracking application designed to make managing money approachable and fun.  
